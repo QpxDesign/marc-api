@@ -5,6 +5,7 @@
   "scripts": {
     "start": "node ./bin/www"
   },
+  
   "dependencies": {
     "cookie-parser": "~1.4.4",
     "cors": "^2.8.5",
