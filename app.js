@@ -3,8 +3,8 @@ var express = require("express");
 var path = require("path");
 var cookieParser = require("cookie-parser");
 var logger = require("morgan");
-var mtaAPI = require("./routes/mtaAPI");
-var tripUpdatesAPI = require("./routes/tripUpdatesAPI");
+var mtaAPI = require("./routes/mtaAPI.cjs");
+var tripUpdatesAPI = require("./routes/tripUpdatesAPI.cjs");
 var cors = require("cors");
 
 var indexRouter = require("./routes/index");
