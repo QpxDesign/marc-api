@@ -2,7 +2,8 @@ var express = require("express");
 var router = express.Router();
 var GtfsRealtimeBindings = require("gtfs-realtime-bindings");
 var request = require("request");
-import fetch from "node-fetch";
+const fetch = (...args) =>
+	import('node-fetch').then(({default: fetch}) => fetch(...args));
 
 router.get("/", function (req, res, next) {
   fetch("https://mdotmta-gtfs-rt.s3.amazonaws.com/MARC+RT/marc-tu.pb")
