@@ -27,7 +27,24 @@ router.get("/", function (req, res, next) {
         if (b === undefined) {
           res.send([{ error: "true", msg: "could not parse json" }]);
         } else {
-          res.send(b);
+          var final_ans = [];
+          b.forEach((item) => {
+            new_trains = [];
+            new_times = [];
+            item.trains.forEach((item2, index) => {
+              if (item.times[index] !== "--") {
+                new_trains.push(item2);
+                new_times.push(item.times[index]);
+              }
+            });
+            var new_obj = {
+              stop_name: item.stop_name,
+              trains: new_trains,
+              times: new_times,
+            };
+            final_ans.push(new_obj);
+          });
+          res.send(final_ans);
         }
       }
     });
