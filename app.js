@@ -5,6 +5,7 @@ var cookieParser = require("cookie-parser");
 var logger = require("morgan");
 var mtaAPI = require("./routes/mtaAPI.js");
 var tripUpdatesAPI = require("./routes/tripUpdatesAPI.js");
+var getTimetable = require("./routes/getTimetable.js");
 var cors = require("cors");
 
 var indexRouter = require("./routes/index");
@@ -27,7 +28,7 @@ app.use("/", indexRouter);
 app.use("/users", usersRouter);
 app.use("/mtaAPI", mtaAPI);
 app.use("/tripUpdatesAPI", tripUpdatesAPI);
-
+app.use("/getTimetable", getTimetable);
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
