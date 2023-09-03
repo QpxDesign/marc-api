@@ -12,7 +12,13 @@ function format(html) {
 
       const stops_body = row.querySelectorAll("td div");
       var ans = {
-        stop_name: stop_name,
+        stop_name: stop_name
+          .replaceAll("Sb", "")
+          .replaceAll("Eb", "")
+          .replaceAll("Wb", "")
+          .replaceAll("Eb", "")
+          .trim(),
+
         trains: [],
         times: [],
       };
