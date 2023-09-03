@@ -21,11 +21,11 @@ router.get("/", function (req, res, next) {
       const a = html_parser.parse(r2);
       const table = a.querySelector(".marctable table");
       if (table === undefined || table === null) {
-        res.send({ error: "true", msg: "no trains today" });
+        res.send([{ error: "true", msg: "no trains today" }]);
       } else {
         const b = formatMarcTimetableHTML(table);
         if (b === undefined) {
-          res.send({ error: "true", msg: "could not parse json" });
+          res.send([{ error: "true", msg: "could not parse json" }]);
         } else {
           res.send(b);
         }
