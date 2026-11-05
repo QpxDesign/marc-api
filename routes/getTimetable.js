@@ -14,7 +14,7 @@ router.get("/", function (req, res, next) {
       req.query.line
     }?schedule_date=${req.query.date}&direction=${
       req.query.direction === "outbound" ? "0" : "1"
-    }`
+    }`,
   )
     .then((r) => r.text())
     .then((r2) => {

@@ -6,6 +6,7 @@ var logger = require("morgan");
 var mtaAPI = require("./routes/mtaAPI.js");
 var tripUpdatesAPI = require("./routes/tripUpdatesAPI.js");
 var getTimetable = require("./routes/getTimetable.js");
+var getTimetableNew = require("./routes/getTimetableNew.js");
 var cors = require("cors");
 
 var indexRouter = require("./routes/index");
@@ -29,6 +30,8 @@ app.use("/users", usersRouter);
 app.use("/mtaAPI", mtaAPI);
 app.use("/tripUpdatesAPI", tripUpdatesAPI);
 app.use("/getTimetable", getTimetable);
+app.use("/getTimetableNew", getTimetableNew);
+
 // catch 404 and forward to error handler
 app.use(function (req, res, next) {
   next(createError(404));
