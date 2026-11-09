@@ -39,6 +39,16 @@ function get_direction(trip_id) {
   return 0;
 }
 
+function get_headsign(trip_id) {
+  for (line of trip_data.split("\n")) {
+    let fields = line.split(",");
+    if (fields[0] === trip_id) {
+      return line.split(",")[3];
+    }
+  }
+  return "";
+}
+
 function get_calendar(trip_id, route_name) {
   // get service_id
   var service_id = "";
@@ -76,17 +86,17 @@ router.get("/", function (req, res, next) {
   for (line of stop_data.split("\n")) {
     let fields = line.split(",");
     let cal = get_calendar(fields[0], req.query.line);
-
+    console.log(cal.length);
     if (
       req.query.stop_id.split(",").includes(fields[3]) &&
       req.query.day_of_week < cal.length &&
       cal[req.query.day_of_week] === "1" &&
       "" + get_direction(fields[0]) === formatted_direction
     ) {
-      console.log("TRIG");
       let a = {
         trip_id: fields[0],
         arrival_time: fields[1],
+        headsign: get_headsign(fields[0]),
       };
       results.push(a);
     }
