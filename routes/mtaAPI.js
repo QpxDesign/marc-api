@@ -18,9 +18,7 @@ router.get("/", function (req, res, next) {
         res.send(data);
       } else {
         data.entity.forEach((pos) => {
-          console.log(pos.vehicle.position.speed);
           pos.vehicle.position.speed *= 2.237;
-          console.log(pos.vehicle.position.speed);
         });
         res.send(data);
       }
